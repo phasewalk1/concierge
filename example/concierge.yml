@@ -1,0 +1,11 @@
+work:
+  frontend:
+    cwd: ./electron
+    before: npm install
+    cmd: npm start
+  backend:
+    cwd: ./fastapi
+    before: pipenv install --ignore-pipfile && pipenv sync
+    cmd: pipenv run uvicorn app:app --host 0.0.0.0 --reload
+    env:
+      - VAULT: "$HOME/Documents/phasewalk1-master"
